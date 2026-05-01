@@ -1,11 +1,191 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+	title="Koi Studios Games | Aventuras para ninos"
+	description="Landing page oficial de Koi Studios Games. Creamos videojuegos para ninos con diversion, creatividad y aprendizaje."
+>
+	<main class="min-h-screen">
+		<section class="relative overflow-hidden">
+			<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,#22d3ee_0%,#0f172a_45%,#020617_100%)]"></div>
+			<div class="absolute -left-24 top-20 h-64 w-64 rounded-full bg-fuchsia-500/25 blur-3xl"></div>
+			<div class="absolute -right-20 bottom-8 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl"></div>
+
+			<div class="relative mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 pb-20 pt-10 md:px-10 lg:px-16">
+				<header class="flex flex-wrap items-center justify-between gap-4">
+					<div class="flex items-center gap-3">
+						<div class="grid h-11 w-11 place-content-center rounded-xl bg-cyan-300 text-slate-900 text-xl">KOI</div>
+						<div>
+							<p class="text-sm uppercase tracking-[0.2em] text-cyan-300">Koi Studios Games</p>
+							<p class="text-xs text-white/70" data-i18n="subtitle">Videojuegos para ninos</p>
+						</div>
+					</div>
+					<button
+						id="language-toggle"
+						class="rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/20"
+					>
+						<span data-i18n="languageButton">EN</span>
+					</button>
+				</header>
+
+				<div class="grid items-center gap-12 lg:grid-cols-2">
+					<div class="space-y-6">
+						<p class="inline-flex rounded-full bg-cyan-300/20 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-cyan-200" data-i18n="badge">
+							Estudio creativo para familias
+						</p>
+						<h1 class="text-4xl font-black leading-tight md:text-6xl" data-i18n="heroTitle">
+							Construimos mundos de juego seguros y divertidos para ninos.
+						</h1>
+						<p class="max-w-xl text-base text-white/80 md:text-lg" data-i18n="heroText">
+							En Koi Studios Games creamos aventuras llenas de color, musica y retos positivos para despertar la imaginacion de cada peque.
+						</p>
+						<div class="flex flex-wrap gap-4">
+							<a href="#juegos" class="rounded-full bg-cyan-300 px-6 py-3 font-bold text-slate-900 hover:bg-cyan-200" data-i18n="primaryCta">Ver nuestros juegos</a>
+							<a href="#contacto" class="rounded-full border border-white/30 px-6 py-3 font-bold hover:bg-white/10" data-i18n="secondaryCta">Contactar al estudio</a>
+						</div>
+					</div>
+
+					<div class="rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-sm">
+						<p class="text-sm font-semibold uppercase tracking-wider text-cyan-200" data-i18n="cardTitle">Nuestra promesa</p>
+						<ul class="mt-5 space-y-4 text-sm text-white/90">
+							<li data-i18n="promise1">Diseno apto para ninos con experiencias positivas.</li>
+							<li data-i18n="promise2">Historias que inspiran creatividad, empatia y curiosidad.</li>
+							<li data-i18n="promise3">Mecanicas simples para aprender jugando en familia.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="juegos" class="mx-auto w-full max-w-6xl px-6 py-20 md:px-10 lg:px-16">
+			<div class="mb-10">
+				<h2 class="text-3xl font-black md:text-4xl" data-i18n="gamesTitle">Juegos destacados</h2>
+				<p class="mt-3 text-white/70" data-i18n="gamesText">Tres aventuras para jugar, aprender y sonreir.</p>
+			</div>
+			<div class="grid gap-6 md:grid-cols-3">
+				<article class="rounded-2xl border border-white/15 bg-slate-900/70 p-6">
+					<h3 class="text-xl font-bold text-cyan-300">Koi Quest</h3>
+					<p class="mt-3 text-sm text-white/80" data-i18n="game1">Explora rios magicos mientras resuelves rompecabezas y ayudas a nuevos amigos.</p>
+				</article>
+				<article class="rounded-2xl border border-white/15 bg-slate-900/70 p-6">
+					<h3 class="text-xl font-bold text-fuchsia-300">Star Garden</h3>
+					<p class="mt-3 text-sm text-white/80" data-i18n="game2">Cultiva planetas coloridos, descubre constelaciones y aprende ciencia basica.</p>
+				</article>
+				<article class="rounded-2xl border border-white/15 bg-slate-900/70 p-6">
+					<h3 class="text-xl font-bold text-emerald-300">Robo Runners</h3>
+					<p class="mt-3 text-sm text-white/80" data-i18n="game3">Corre con robots amistosos superando desafios de logica y coordinacion.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="border-y border-white/10 bg-white/5">
+			<div class="mx-auto grid w-full max-w-6xl gap-8 px-6 py-16 text-center md:grid-cols-3 md:px-10 lg:px-16">
+				<div>
+					<p class="text-4xl font-black text-cyan-300">1M+</p>
+					<p class="mt-2 text-sm text-white/75" data-i18n="stat1">Partidas completadas por peques felices</p>
+				</div>
+				<div>
+					<p class="text-4xl font-black text-fuchsia-300">25</p>
+					<p class="mt-2 text-sm text-white/75" data-i18n="stat2">Paises jugando nuestras aventuras</p>
+				</div>
+				<div>
+					<p class="text-4xl font-black text-emerald-300">100%</p>
+					<p class="mt-2 text-sm text-white/75" data-i18n="stat3">Contenido familiar y seguro</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="contacto" class="mx-auto w-full max-w-6xl px-6 py-20 md:px-10 lg:px-16">
+			<div class="rounded-3xl border border-white/15 bg-slate-900/70 p-8 md:p-12">
+				<h2 class="text-3xl font-black md:text-4xl" data-i18n="contactTitle">Hablemos de tu proximo juego</h2>
+				<p class="mt-4 max-w-2xl text-white/75" data-i18n="contactText">
+					Trabajamos con editoras, escuelas y marcas para crear experiencias interactivas que encantan a la infancia.
+				</p>
+				<div class="mt-8 flex flex-wrap gap-4">
+					<a class="rounded-full bg-cyan-300 px-6 py-3 font-bold text-slate-900 hover:bg-cyan-200" href="mailto:hola@koistudiosgames.com">
+						hola@koistudiosgames.com
+					</a>
+					<a class="rounded-full border border-white/25 px-6 py-3 font-bold hover:bg-white/10" href="#" data-i18n="downloadDeck">Descargar deck</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<script>
+		// @ts-nocheck
+		const content = {
+			es: {
+				subtitle: 'Videojuegos para ninos',
+				languageButton: 'EN',
+				badge: 'Estudio creativo para familias',
+				heroTitle: 'Construimos mundos de juego seguros y divertidos para ninos.',
+				heroText:
+					'En Koi Studios Games creamos aventuras llenas de color, musica y retos positivos para despertar la imaginacion de cada peque.',
+				primaryCta: 'Ver nuestros juegos',
+				secondaryCta: 'Contactar al estudio',
+				cardTitle: 'Nuestra promesa',
+				promise1: 'Diseno apto para ninos con experiencias positivas.',
+				promise2: 'Historias que inspiran creatividad, empatia y curiosidad.',
+				promise3: 'Mecanicas simples para aprender jugando en familia.',
+				gamesTitle: 'Juegos destacados',
+				gamesText: 'Tres aventuras para jugar, aprender y sonreir.',
+				game1: 'Explora rios magicos mientras resuelves rompecabezas y ayudas a nuevos amigos.',
+				game2: 'Cultiva planetas coloridos, descubre constelaciones y aprende ciencia basica.',
+				game3: 'Corre con robots amistosos superando desafios de logica y coordinacion.',
+				stat1: 'Partidas completadas por peques felices',
+				stat2: 'Paises jugando nuestras aventuras',
+				stat3: 'Contenido familiar y seguro',
+				contactTitle: 'Hablemos de tu proximo juego',
+				contactText:
+					'Trabajamos con editoras, escuelas y marcas para crear experiencias interactivas que encantan a la infancia.',
+				downloadDeck: 'Descargar deck',
+			},
+			en: {
+				subtitle: 'Video games for kids',
+				languageButton: 'ES',
+				badge: 'Creative studio for families',
+				heroTitle: 'We build safe and fun game worlds for kids.',
+				heroText:
+					'At Koi Studios Games we create colorful adventures, joyful music, and positive challenges to spark every child imagination.',
+				primaryCta: 'See our games',
+				secondaryCta: 'Contact the studio',
+				cardTitle: 'Our promise',
+				promise1: 'Kid-friendly design with positive experiences.',
+				promise2: 'Stories that inspire creativity, empathy, and curiosity.',
+				promise3: 'Simple mechanics to learn while playing together.',
+				gamesTitle: 'Featured games',
+				gamesText: 'Three adventures to play, learn, and smile.',
+				game1: 'Explore magical rivers while solving puzzles and helping new friends.',
+				game2: 'Grow colorful planets, discover constellations, and learn basic science.',
+				game3: 'Race with friendly robots through logic and coordination challenges.',
+				stat1: 'Completed sessions by happy kids',
+				stat2: 'Countries playing our adventures',
+				stat3: 'Family-friendly and safe content',
+				contactTitle: 'Let us build your next game',
+				contactText:
+					'We partner with publishers, schools, and brands to create interactive experiences kids love.',
+				downloadDeck: 'Download deck',
+			},
+		};
+
+		const toggle = document.querySelector('#language-toggle');
+		const languageElements = document.querySelectorAll('[data-i18n]');
+		let currentLanguage = 'es';
+
+		const translate = (lang) => {
+			languageElements.forEach((element) => {
+				const key = element.getAttribute('data-i18n');
+				if (key && content[lang][key]) {
+					element.textContent = content[lang][key];
+				}
+			});
+			document.documentElement.lang = lang;
+		};
+
+		toggle?.addEventListener('click', () => {
+			currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+			translate(currentLanguage);
+		});
+	</script>
 </Layout>
