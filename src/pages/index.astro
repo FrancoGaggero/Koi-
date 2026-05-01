@@ -8,22 +8,22 @@ import Layout from '../layouts/Layout.astro';
 >
 	<main class="min-h-screen">
 		<section class="relative overflow-hidden">
-			<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,#22d3ee_0%,#0f172a_45%,#020617_100%)]"></div>
-			<div class="absolute -left-24 top-20 h-64 w-64 rounded-full bg-fuchsia-500/25 blur-3xl"></div>
-			<div class="absolute -right-20 bottom-8 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl"></div>
+			<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,#67e8f9_0%,#6d28d9_42%,#312e81_100%)]"></div>
+			<div class="absolute -left-24 top-20 h-64 w-64 rounded-full bg-yellow-300/35 blur-3xl"></div>
+			<div class="absolute -right-20 bottom-8 h-72 w-72 rounded-full bg-pink-300/30 blur-3xl"></div>
 
 			<div class="relative mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 pb-20 pt-10 md:px-10 lg:px-16">
 				<header class="flex flex-wrap items-center justify-between gap-4">
 					<div class="flex items-center gap-3">
-						<div class="grid h-11 w-11 place-content-center rounded-xl bg-cyan-300 text-slate-900 text-xl">KOI</div>
+						<div class="grid h-11 w-11 place-content-center rounded-xl bg-yellow-300 text-indigo-900 text-xl font-black">KOI</div>
 						<div>
-							<p class="text-sm uppercase tracking-[0.2em] text-cyan-300">Koi Studios Games</p>
-							<p class="text-xs text-white/70" data-i18n="subtitle">Videojuegos para ninos</p>
+							<p class="text-sm uppercase tracking-[0.2em] text-amber-200">Koi Studios Games</p>
+							<p class="text-xs text-indigo-100/90" data-i18n="subtitle">Videojuegos para ninos</p>
 						</div>
 					</div>
 					<button
 						id="language-toggle"
-						class="rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/20"
+						class="rounded-full border border-indigo-200/45 bg-indigo-100/20 px-4 py-2 text-sm font-semibold text-amber-100 hover:bg-indigo-100/35"
 					>
 						<span data-i18n="languageButton">EN</span>
 					</button>
@@ -31,24 +31,24 @@ import Layout from '../layouts/Layout.astro';
 
 				<div class="grid items-center gap-12 lg:grid-cols-2">
 					<div class="space-y-6">
-						<p class="inline-flex rounded-full bg-cyan-300/20 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-cyan-200" data-i18n="badge">
+						<p class="inline-flex rounded-full bg-amber-200/20 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-amber-100" data-i18n="badge">
 							Estudio creativo para familias
 						</p>
 						<h1 class="text-4xl font-black leading-tight md:text-6xl" data-i18n="heroTitle">
 							Construimos mundos de juego seguros y divertidos para ninos.
 						</h1>
-						<p class="max-w-xl text-base text-white/80 md:text-lg" data-i18n="heroText">
+						<p class="max-w-xl text-base text-indigo-100/95 md:text-lg" data-i18n="heroText">
 							En Koi Studios Games creamos aventuras llenas de color, musica y retos positivos para despertar la imaginacion de cada peque.
 						</p>
 						<div class="flex flex-wrap gap-4">
-							<a href="#juegos" class="rounded-full bg-cyan-300 px-6 py-3 font-bold text-slate-900 hover:bg-cyan-200" data-i18n="primaryCta">Ver nuestros juegos</a>
-							<a href="#contacto" class="rounded-full border border-white/30 px-6 py-3 font-bold hover:bg-white/10" data-i18n="secondaryCta">Contactar al estudio</a>
+							<a href="#juegos" class="rounded-full bg-yellow-300 px-6 py-3 font-bold text-indigo-950 hover:bg-yellow-200" data-i18n="primaryCta">Ver nuestros juegos</a>
+							<a href="#contacto" class="rounded-full border border-indigo-100/45 bg-indigo-200/10 px-6 py-3 font-bold text-white hover:bg-indigo-200/20" data-i18n="secondaryCta">Contactar al estudio</a>
 						</div>
 					</div>
 
-					<div class="rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-sm">
-						<p class="text-sm font-semibold uppercase tracking-wider text-cyan-200" data-i18n="cardTitle">Nuestra promesa</p>
-						<ul class="mt-5 space-y-4 text-sm text-white/90">
+					<div class="rounded-3xl border border-amber-100/35 bg-indigo-950/35 p-8 backdrop-blur-sm">
+						<p class="text-sm font-semibold uppercase tracking-wider text-amber-100" data-i18n="cardTitle">Nuestra promesa</p>
+						<ul class="mt-5 space-y-4 text-sm text-indigo-100">
 							<li data-i18n="promise1">Diseno apto para ninos con experiencias positivas.</li>
 							<li data-i18n="promise2">Historias que inspiran creatividad, empatia y curiosidad.</li>
 							<li data-i18n="promise3">Mecanicas simples para aprender jugando en familia.</li>
@@ -61,52 +61,52 @@ import Layout from '../layouts/Layout.astro';
 		<section id="juegos" class="mx-auto w-full max-w-6xl px-6 py-20 md:px-10 lg:px-16">
 			<div class="mb-10">
 				<h2 class="text-3xl font-black md:text-4xl" data-i18n="gamesTitle">Juegos destacados</h2>
-				<p class="mt-3 text-white/70" data-i18n="gamesText">Tres aventuras para jugar, aprender y sonreir.</p>
+				<p class="mt-3 text-indigo-100/85" data-i18n="gamesText">Tres aventuras para jugar, aprender y sonreir.</p>
 			</div>
 			<div class="grid gap-6 md:grid-cols-3">
-				<article class="rounded-2xl border border-white/15 bg-slate-900/70 p-6">
-					<h3 class="text-xl font-bold text-cyan-300">Koi Quest</h3>
-					<p class="mt-3 text-sm text-white/80" data-i18n="game1">Explora rios magicos mientras resuelves rompecabezas y ayudas a nuevos amigos.</p>
+				<article class="rounded-2xl border border-cyan-100/20 bg-cyan-400/10 p-6 backdrop-blur-sm">
+					<h3 class="text-xl font-bold text-cyan-200">Koi Quest</h3>
+					<p class="mt-3 text-sm text-indigo-50/95" data-i18n="game1">Explora rios magicos mientras resuelves rompecabezas y ayudas a nuevos amigos.</p>
 				</article>
-				<article class="rounded-2xl border border-white/15 bg-slate-900/70 p-6">
-					<h3 class="text-xl font-bold text-fuchsia-300">Star Garden</h3>
-					<p class="mt-3 text-sm text-white/80" data-i18n="game2">Cultiva planetas coloridos, descubre constelaciones y aprende ciencia basica.</p>
+				<article class="rounded-2xl border border-pink-100/20 bg-pink-400/10 p-6 backdrop-blur-sm">
+					<h3 class="text-xl font-bold text-pink-200">Star Garden</h3>
+					<p class="mt-3 text-sm text-indigo-50/95" data-i18n="game2">Cultiva planetas coloridos, descubre constelaciones y aprende ciencia basica.</p>
 				</article>
-				<article class="rounded-2xl border border-white/15 bg-slate-900/70 p-6">
-					<h3 class="text-xl font-bold text-emerald-300">Robo Runners</h3>
-					<p class="mt-3 text-sm text-white/80" data-i18n="game3">Corre con robots amistosos superando desafios de logica y coordinacion.</p>
+				<article class="rounded-2xl border border-emerald-100/20 bg-emerald-400/10 p-6 backdrop-blur-sm">
+					<h3 class="text-xl font-bold text-emerald-200">Robo Runners</h3>
+					<p class="mt-3 text-sm text-indigo-50/95" data-i18n="game3">Corre con robots amistosos superando desafios de logica y coordinacion.</p>
 				</article>
 			</div>
 		</section>
 
-		<section class="border-y border-white/10 bg-white/5">
+		<section class="border-y border-indigo-100/20 bg-indigo-300/10">
 			<div class="mx-auto grid w-full max-w-6xl gap-8 px-6 py-16 text-center md:grid-cols-3 md:px-10 lg:px-16">
 				<div>
-					<p class="text-4xl font-black text-cyan-300">1M+</p>
-					<p class="mt-2 text-sm text-white/75" data-i18n="stat1">Partidas completadas por peques felices</p>
+					<p class="text-4xl font-black text-yellow-300">1M+</p>
+					<p class="mt-2 text-sm text-indigo-100/95" data-i18n="stat1">Partidas completadas por peques felices</p>
 				</div>
 				<div>
-					<p class="text-4xl font-black text-fuchsia-300">25</p>
-					<p class="mt-2 text-sm text-white/75" data-i18n="stat2">Paises jugando nuestras aventuras</p>
+					<p class="text-4xl font-black text-pink-300">25</p>
+					<p class="mt-2 text-sm text-indigo-100/95" data-i18n="stat2">Paises jugando nuestras aventuras</p>
 				</div>
 				<div>
 					<p class="text-4xl font-black text-emerald-300">100%</p>
-					<p class="mt-2 text-sm text-white/75" data-i18n="stat3">Contenido familiar y seguro</p>
+					<p class="mt-2 text-sm text-indigo-100/95" data-i18n="stat3">Contenido familiar y seguro</p>
 				</div>
 			</div>
 		</section>
 
 		<section id="contacto" class="mx-auto w-full max-w-6xl px-6 py-20 md:px-10 lg:px-16">
-			<div class="rounded-3xl border border-white/15 bg-slate-900/70 p-8 md:p-12">
+			<div class="rounded-3xl border border-yellow-100/30 bg-indigo-950/50 p-8 md:p-12">
 				<h2 class="text-3xl font-black md:text-4xl" data-i18n="contactTitle">Hablemos de tu proximo juego</h2>
-				<p class="mt-4 max-w-2xl text-white/75" data-i18n="contactText">
+				<p class="mt-4 max-w-2xl text-indigo-100/90" data-i18n="contactText">
 					Trabajamos con editoras, escuelas y marcas para crear experiencias interactivas que encantan a la infancia.
 				</p>
 				<div class="mt-8 flex flex-wrap gap-4">
-					<a class="rounded-full bg-cyan-300 px-6 py-3 font-bold text-slate-900 hover:bg-cyan-200" href="mailto:hola@koistudiosgames.com">
+					<a class="rounded-full bg-yellow-300 px-6 py-3 font-bold text-indigo-950 hover:bg-yellow-200" href="mailto:hola@koistudiosgames.com">
 						hola@koistudiosgames.com
 					</a>
-					<a class="rounded-full border border-white/25 px-6 py-3 font-bold hover:bg-white/10" href="#" data-i18n="downloadDeck">Descargar deck</a>
+					<a class="rounded-full border border-indigo-100/45 bg-indigo-200/10 px-6 py-3 font-bold hover:bg-indigo-200/20" href="#" data-i18n="downloadDeck">Descargar deck</a>
 				</div>
 			</div>
 		</section>
