@@ -6,6 +6,8 @@ export const ESTUDIO = 'Koi Educational Games';
 export const MAIL_CONTACTO: string | null = 'francogaggero@krowdsupply.com';
 
 // Página de desarrollador en Google Play (Play la arma con el nombre exacto del desarrollador)
+export const INSTAGRAM = 'https://www.instagram.com/koi.gamingstudio/';
+
 export const PLAY_DESARROLLADOR = 'https://play.google.com/store/apps/developer?id=Koi+Educational+Games';
 
 export const APPS = {

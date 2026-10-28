@@ -4,7 +4,7 @@ const en: Textos = {
 	meta: {
 		titulo: 'Koi Educational Games · Games to learn through play',
 		descripcion:
-			'Independent studio making educational games for kids ages 4 to 7: Capybara Music & Sounds and Capybara Learn & Play, starring Capi the capybara.',
+			'Independent studio making educational games for kids ages 4 to 7: Capybara Music & Sounds and Capibara Learn & Play, starring Capi the capybara.',
 	},
 	nav: { apps: 'Apps', proximamente: 'Coming soon', nosotros: 'About', contacto: 'Contact', idioma: 'ES', idiomaNombre: 'Español' },
 	hero: {
@@ -32,7 +32,7 @@ const en: Textos = {
 			chips: ['22 games', 'Real instruments', 'Works offline', '6 languages'],
 		},
 		learn: {
-			nombre: 'Capybara Learn & Play',
+			nombre: 'Capibara Learn & Play',
 			lema: 'Learn through play with Capi, the capybara in sunglasses.',
 			texto:
 				'More than 25 games with numbers, shapes, colors, memory, puzzles, drawing and music, so little ones can practice at their own pace.',
@@ -63,6 +63,7 @@ const en: Textos = {
 		texto: "Whether you're a parent, a teacher or want to join a project, write to us.",
 		escribinos: 'Write to us',
 		verPlay: 'See on Google Play',
+		instagram: 'Follow us on Instagram',
 	},
 	footer: { derechos: 'All rights reserved.', hecho: 'Made with love and lots of capybaras.' },
 };

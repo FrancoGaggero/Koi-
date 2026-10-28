@@ -4,7 +4,7 @@ const es = {
 	meta: {
 		titulo: 'Koi Educational Games · Juegos para aprender jugando',
 		descripcion:
-			'Estudio independiente de juegos educativos para chicos de 4 a 7 años: Capybara Music & Sounds y Capybara Learn & Play, con Capi el capibara.',
+			'Estudio independiente de juegos educativos para chicos de 4 a 7 años: Capybara Music & Sounds y Capibara Learn & Play, con Capi el capibara.',
 	},
 	nav: { apps: 'Apps', proximamente: 'Próximamente', nosotros: 'Nosotros', contacto: 'Contacto', idioma: 'EN', idiomaNombre: 'English' },
 	hero: {
@@ -32,7 +32,7 @@ const es = {
 			chips: ['22 juegos', 'Instrumentos reales', 'Sin conexión', '6 idiomas'],
 		},
 		learn: {
-			nombre: 'Capybara Learn & Play',
+			nombre: 'Capibara Learn & Play',
 			lema: 'Aprender jugando con Capi, el capibara de anteojos de sol.',
 			texto:
 				'Más de 25 juegos de números, formas, colores, memoria, rompecabezas, dibujo y música, para que los más chicos practiquen a su ritmo.',
@@ -63,6 +63,7 @@ const es = {
 		texto: 'Si sos familia, docente o te gustaría sumarte a un proyecto, escribinos.',
 		escribinos: 'Escribinos',
 		verPlay: 'Ver en Google Play',
+		instagram: 'Seguinos en Instagram',
 	},
 	footer: { derechos: 'Todos los derechos reservados.', hecho: 'Hecho con cariño y muchos capibaras.' },
 };
