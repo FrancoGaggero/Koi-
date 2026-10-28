@@ -1,0 +1,19 @@
+# Netlify publica la web desde este repo: compila con Astro y sirve dist/
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Astro 6 pide Node 22.12 o más nuevo
+  NODE_VERSION = "22"
+
+# Los videos y las imágenes con hash no cambian: caché larga
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

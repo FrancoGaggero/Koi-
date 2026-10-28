@@ -1,36 +1,63 @@
 ---
 import '../styles/global.css';
+import { t, type Lang } from '../i18n';
+import encabezado from '../assets/marca/encabezado.jpg';
+import koi from '../assets/marca/koi.png';
+import { getImage } from 'astro:assets';
 
 interface Props {
-	title?: string;
-	description?: string;
-	lang?: 'es' | 'en';
+	lang: Lang;
 }
 
-const {
-	title = 'Koi Studios Games | Videojuegos para ninos',
-	description = 'Creamos videojuegos divertidos, seguros y educativos para ninos.',
-	lang = 'es',
-} = Astro.props;
+const { lang } = Astro.props;
+const tx = t(lang);
+const og = await getImage({ src: encabezado, format: 'jpg', width: 1200 });
+const favicon = await getImage({ src: koi, format: 'png', width: 64 });
+const appleIcon = await getImage({ src: koi, format: 'png', width: 180 });
+const sitio = Astro.site ?? new URL('https://koigamingstudio.com');
+const urlEs = new URL('/', sitio).href;
+const urlEn = new URL('/en/', sitio).href;
 ---
 
 <!doctype html>
 <html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<script
-			async
-			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9213491526534512"
-			crossorigin="anonymous"
-		></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{tx.meta.titulo}</title>
+		<meta name="description" content={tx.meta.descripcion} />
+		<meta name="theme-color" content="#13b5aa" />
+		<link rel="icon" type="image/png" href={favicon.src} />
+		<link rel="apple-touch-icon" href={appleIcon.src} />
+		<link rel="canonical" href={lang === 'es' ? urlEs : urlEn} />
+		<link rel="alternate" hreflang="es" href={urlEs} />
+		<link rel="alternate" hreflang="en" href={urlEn} />
+		<link rel="alternate" hreflang="x-default" href={urlEs} />
+		<link rel="preload" href="/fonts/LuckiestGuy-Regular.ttf" as="font" type="font/ttf" crossorigin />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={tx.meta.titulo} />
+		<meta property="og:description" content={tx.meta.descripcion} />
+		<meta property="og:image" content={new URL(og.src, sitio).href} />
+		<meta property="og:locale" content={lang === 'es' ? 'es_AR' : 'en_US'} />
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
-		<title>{title}</title>
+		<script is:inline>
+			// Con movimiento permitido, lo que entra con GSAP arranca oculto (sin JS se ve todo)
+			if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-motion');
+		</script>
+		<script is:inline define:vars={{ lang }}>
+			// Primera visita: si el navegador no está en español, se pasa al inglés (una sola vez;
+			// después manda lo que se eligió con el botón ES/EN)
+			try {
+				if (!localStorage.getItem('koi-idioma')) {
+					const prefiere = /^es\b/i.test(navigator.language || '') ? 'es' : 'en';
+					localStorage.setItem('koi-idioma', prefiere);
+					if (prefiere !== lang) location.replace(prefiere === 'es' ? '/' : '/en/');
+				}
+			} catch (e) {}
+		</script>
 	</head>
-	<body class="bg-slate-950 text-white antialiased">
+	<body>
 		<slot />
 	</body>
 </html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1080">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      /* Loop de 6 s para la tarjeta de Capybara Music & Sounds en la web del estudio:
+         Capi dirige a tempo (8 pulsos), salen notas de la batuta y los instrumentos rebotan.
+         Todo es periódico dentro de los 6 s, así el loop no se nota. */
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1080px; overflow: hidden; background: #5a2bc4; }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: radial-gradient(circle at 50% 40%, #a37bff 0%, #6b3fd4 45%, #43199e 100%);
+      }
+      .capa { position: absolute; inset: 0; }
+      #rayos {
+        position: absolute;
+        left: -260px;
+        top: -300px;
+        width: 1600px;
+        height: 1600px;
+        display: block;
+        background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.09) 0deg 12deg, rgba(255, 255, 255, 0) 12deg 30deg);
+        border-radius: 50%;
+      }
+      #puntos {
+        background-image: radial-gradient(rgba(255, 255, 255, 0.22) 3px, transparent 3.5px);
+        background-size: 46px 46px;
+      }
+      #sombra {
+        position: absolute;
+        left: 340px;
+        top: 948px;
+        width: 400px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(30, 20, 70, 0.35);
+      }
+      .capi {
+        position: absolute;
+        bottom: 96px;
+        display: block;
+      }
+      #capi-arriba { left: 276px; width: 482px; }
+      #capi-abajo { left: 356px; width: 368px; opacity: 0; }
+      .inst {
+        position: absolute;
+        display: block;
+        filter: drop-shadow(6px 8px 0 rgba(30, 42, 74, 0.35));
+      }
+      .nota {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 84px;
+        height: 84px;
+        display: block;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-ph1f" id="root" data-composition-id="main" data-start="0" data-duration="6" data-width="1080" data-height="1080">
+      <div data-hf-id="hf-zwj1" id="fondo" class="capa clip" data-start="0" data-duration="6" data-track-index="0">
+        <div data-hf-id="hf-pgey" id="rayos" data-layout-allow-overflow=""></div>
+        <div data-hf-id="hf-72ry" id="puntos" class="capa"></div>
+      </div>
+
+      <div data-hf-id="hf-e84f" id="escena" class="capa clip" data-start="0" data-duration="6" data-track-index="1">
+        <img data-hf-id="hf-1xxf" id="i-piano" class="inst" src="assets/piano.png" style="left: 70px; top: 230px; width: 230px" alt="">
+        <img data-hf-id="hf-2vg6" id="i-trompeta" class="inst" src="assets/trompeta.png" style="left: 800px; top: 210px; width: 230px" alt="">
+        <img data-hf-id="hf-qqmj" id="i-tambor" class="inst" src="assets/tambor.png" style="left: 60px; top: 560px; width: 220px" alt="">
+        <img data-hf-id="hf-8axy" id="i-guitarra" class="inst" src="assets/guitarra.png" style="left: 790px; top: 560px; width: 250px" alt="">
+        <img data-hf-id="hf-fg3n" id="i-xilofono" class="inst" src="assets/xilofono.png" style="left: 60px; top: 840px; width: 230px" alt="">
+        <img data-hf-id="hf-ekc0" id="i-maracas" class="inst" src="assets/maracas.png" style="left: 820px; top: 820px; width: 190px" alt="">
+
+        <div data-hf-id="hf-cesh" id="sombra"></div>
+        <img data-hf-id="hf-4if7" id="capi-arriba" class="capi" src="assets/capi-arriba.png" alt="">
+        <img data-hf-id="hf-iupb" id="capi-abajo" class="capi" src="assets/capi-abajo.png" alt="">
+
+        <svg data-hf-id="hf-fhtd" id="nota-0" class="nota" viewBox="0 0 48 48"><path data-hf-id="hf-djag" d="M18 36a7 6 0 1 1-2-5V8l22-5v26a7 6 0 1 1-2-5V11L18 15z" fill="#ffc83d" stroke="#1e2a4a" stroke-width="3" stroke-linejoin="round" /></svg>
+        <svg data-hf-id="hf-7fl4" id="nota-1" class="nota" viewBox="0 0 48 48"><path data-hf-id="hf-mhga" d="M22 38a8 7 0 1 1-2-6V6l14 6v6l-12-5z" fill="#ff8fb1" stroke="#1e2a4a" stroke-width="3" stroke-linejoin="round" /></svg>
+        <svg data-hf-id="hf-n0e3" id="nota-2" class="nota" viewBox="0 0 48 48"><path data-hf-id="hf-4pyn" d="M18 36a7 6 0 1 1-2-5V8l22-5v26a7 6 0 1 1-2-5V11L18 15z" fill="#7fe8dc" stroke="#1e2a4a" stroke-width="3" stroke-linejoin="round" /></svg>
+        <svg data-hf-id="hf-d0ea" id="nota-3" class="nota" viewBox="0 0 48 48"><path data-hf-id="hf-nso5" d="M22 38a8 7 0 1 1-2-6V6l14 6v6l-12-5z" fill="#fffdf6" stroke="#1e2a4a" stroke-width="3" stroke-linejoin="round" /></svg>
+        <svg data-hf-id="hf-ejxx" id="nota-4" class="nota" viewBox="0 0 48 48"><path data-hf-id="hf-f931" d="M18 36a7 6 0 1 1-2-5V8l22-5v26a7 6 0 1 1-2-5V11L18 15z" fill="#ff8fb1" stroke="#1e2a4a" stroke-width="3" stroke-linejoin="round" /></svg>
+        <svg data-hf-id="hf-5a7w" id="nota-5" class="nota" viewBox="0 0 48 48"><path data-hf-id="hf-z8ez" d="M22 38a8 7 0 1 1-2-6V6l14 6v6l-12-5z" fill="#ffc83d" stroke="#1e2a4a" stroke-width="3" stroke-linejoin="round" /></svg>
+        <svg data-hf-id="hf-353z" id="nota-6" class="nota" viewBox="0 0 48 48"><path data-hf-id="hf-unmu" d="M18 36a7 6 0 1 1-2-5V8l22-5v26a7 6 0 1 1-2-5V11L18 15z" fill="#fffdf6" stroke="#1e2a4a" stroke-width="3" stroke-linejoin="round" /></svg>
+        <svg data-hf-id="hf-6k52" id="nota-7" class="nota" viewBox="0 0 48 48"><path data-hf-id="hf-eo8k" d="M22 38a8 7 0 1 1-2-6V6l14 6v6l-12-5z" fill="#7fe8dc" stroke="#1e2a4a" stroke-width="3" stroke-linejoin="round" /></svg>
+      </div>
+    </div>
+
+    <script>
+      const PERIODO = 6;
+      const PULSO = 0.75; // 8 pulsos por loop
+      const PASO = 0.125; // los trayectos se arman con tramos de 0,125 s alineados al loop
+      const tl = gsap.timeline({ paused: true });
+
+      // Recorre estado(u), u de 0 a 1, en tramos lineales que dan la vuelta al loop
+      function trayecto(el, inicio, dur, estado) {
+        const n = Math.round(dur / PASO);
+        for (let k = 0; k < n; k++) {
+          const t = (inicio + k * PASO) % PERIODO;
+          tl.fromTo(el, estado(k / n), { ...estado((k + 1) / n), duration: PASO, ease: "none", immediateRender: false }, t);
+        }
+      }
+
+      // Fondo: los rayos giran un período (30°) por loop
+      tl.fromTo("#rayos", { rotation: 0 }, { rotation: 30, duration: PERIODO, ease: "none" }, 0);
+
+      // Capi: cambia de pose en cada pulso (batuta arriba / abajo) y se mece
+      for (let b = 0; b < 8; b++) {
+        const arriba = b % 2 === 0;
+        tl.set("#capi-arriba", { opacity: arriba ? 1 : 0 }, b * PULSO);
+        tl.set("#capi-abajo", { opacity: arriba ? 0 : 1 }, b * PULSO);
+      }
+      tl.fromTo(".capi", { y: 0 }, { y: -16, duration: PULSO / 2, ease: "sine.inOut", yoyo: true, repeat: 15 }, 0);
+      tl.fromTo("#sombra", { scaleX: 1 }, { scaleX: 0.9, duration: PULSO / 2, ease: "sine.inOut", yoyo: true, repeat: 15 }, 0);
+
+      // Instrumentos: rebotan a tempo, la mitad en contratiempo
+      gsap.utils.toArray(".inst").forEach((el, i) => {
+        const a = i % 2 === 0 ? { scale: 1, rotation: -7, y: 0 } : { scale: 1.12, rotation: 7, y: -18 };
+        const b = i % 2 === 0 ? { scale: 1.12, rotation: 7, y: -18 } : { scale: 1, rotation: -7, y: 0 };
+        tl.fromTo(el, a, { ...b, duration: PULSO, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+      });
+
+      // Notas: una por pulso desde la batuta; suben haciendo eses hacia un costado
+      const ORIGEN = { x: 498, y: 300 }; // sobre la cabeza de Capi (la nota mide 84 px)
+      for (let i = 0; i < 8; i++) {
+        const lado = i % 2 === 0 ? -1 : 1;
+        const giro = i % 3 === 0 ? 1 : -1;
+        trayecto(`#nota-${i}`, i * PULSO, 2 * PULSO, (u) => {
+          const e = 1 - Math.pow(1 - u, 2);
+          return {
+            x: ORIGEN.x - 42 + lado * (30 + 250 * e) + Math.sin(u * Math.PI * 3) * 26,
+            y: ORIGEN.y - 42 - 250 * e,
+            scale: 0.4 + 0.9 * Math.min(u * 4, 1),
+            rotation: giro * 25 * Math.sin(u * Math.PI * 2),
+            opacity: u < 0.12 ? u / 0.12 : u > 0.75 ? (1 - u) / 0.25 : 1,
+          };
+        });
+      }
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

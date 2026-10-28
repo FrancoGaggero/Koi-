@@ -1,0 +1,82 @@
+---
+import AppCard from './AppCard.astro';
+import KoiSvg from './KoiSvg.astro';
+import { APPS } from '../config';
+import { t, type Lang } from '../i18n';
+import iconoMusic from '../assets/apps/capibara-music-icono.png';
+import iconoLearn from '../assets/apps/learn-play-icono.png';
+import capiDirector from '../assets/apps/capi-director.png';
+import capiAviador from '../assets/apps/capi-aviador.png';
+
+const { lang } = Astro.props as { lang: Lang };
+const tx = t(lang);
+
+const juegos = import.meta.glob<{ default: ImageMetadata }>('../assets/juegos/*.png', { eager: true });
+const deApp = (prefijo: string) =>
+	Object.entries(juegos)
+		.filter(([ruta]) => ruta.includes(`/${prefijo}-`))
+		.map(([, mod]) => mod.default);
+
+// Videos loop de HyperFrames (public/video/): si están, reemplazan la imagen de Capi
+const videos = import.meta.glob('/public/video/*.mp4');
+const video = (nombre: string) =>
+	videos[`/public/video/${nombre}.mp4`]
+		? { mp4: `/video/${nombre}.mp4`, webm: `/video/${nombre}.webm`, poster: `/video/${nombre}.jpg` }
+		: undefined;
+---
+
+<section id="apps" class="relative scroll-mt-20 bg-estanque pb-28 pt-10 md:pt-16">
+	<!-- Reflejos del agua -->
+	<div class="pointer-events-none absolute inset-0 opacity-20 [background-image:radial-gradient(ellipse_at_center,#ffffff_0%,transparent_60%)] [background-size:180px_60px]"></div>
+	<!-- Koi que cruza nadando (motion.ts) -->
+	<div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+		<div data-koi-nada class="absolute left-0 top-[18%] w-40 opacity-90 md:w-56"><KoiSvg class="w-full" /></div>
+		<div data-koi-nada data-koi-inverso class="absolute left-0 top-[62%] w-28 opacity-80 md:w-40"><KoiSvg class="w-full" manchas="#ffc83d" /></div>
+	</div>
+
+	<div class="relative mx-auto max-w-6xl px-4 md:px-8">
+		<div class="text-center">
+			<p class="chip" data-entra>{tx.apps.chip}</p>
+			<h2 class="titulo-juguete mt-5 text-[clamp(2.4rem,6vw,4.4rem)] text-papel" data-entra>{tx.apps.titulo}</h2>
+		</div>
+
+		<div class="mt-16 space-y-24">
+			<div class="rounded-[2.5rem] bg-papel/95 p-6 md:p-10 sticker">
+				<AppCard
+					lang={lang}
+					app="music"
+					icono={iconoMusic}
+					capi={capiDirector}
+					miniaturas={deApp('music')}
+					paquete={APPS.music.paquete}
+					publicada={APPS.music.publicada}
+					privacidad={APPS.music.privacidad}
+					fondo="radial-gradient(circle at 30% 20%, #9a6cff, #5a2bc4 70%)"
+					acento="#6b3fd4"
+					video={video('capibara-music')}
+				/>
+			</div>
+			<div class="rounded-[2.5rem] bg-papel/95 p-6 md:p-10 sticker">
+				<AppCard
+					lang={lang}
+					app="learn"
+					icono={iconoLearn}
+					capi={capiAviador}
+					miniaturas={deApp('learn')}
+					paquete={APPS.learn.paquete}
+					publicada={APPS.learn.publicada}
+					privacidad={APPS.learn.privacidad}
+					fondo="radial-gradient(circle at 30% 20%, #ffd36b, #ff9b4a 75%)"
+					acento="#ff5a36"
+					invertido
+					video={video('learn-play')}
+				/>
+			</div>
+		</div>
+	</div>
+
+	<svg class="absolute inset-x-0 bottom-0 h-16 w-full md:h-24" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+		<path d="M0 45 C 220 95 420 90 640 55 S 1060 5 1260 45 S 1400 70 1440 60 L1440 100 L0 100 Z" fill="#fff6e4" />
+		<path d="M0 45 C 220 95 420 90 640 55 S 1060 5 1260 45 S 1400 70 1440 60" fill="none" stroke="#1e2a4a" stroke-width="4" vector-effect="non-scaling-stroke" />
+	</svg>
+</section>

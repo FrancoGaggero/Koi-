@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import koi from '../assets/marca/koi.png';
+import { ESTUDIO } from '../config';
+import { t, rutaInicio, otroIdioma, type Lang } from '../i18n';
+
+const { lang } = Astro.props as { lang: Lang };
+const tx = t(lang);
+const otro = otroIdioma(lang);
+---
+
+<header id="cabecera" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-8">
+		<a href={rutaInicio(lang)} class="group flex items-center gap-3" aria-label={ESTUDIO}>
+			<Image src={koi} alt="" width={48} height={48} class="h-12 w-12 rounded-full border-[3px] border-tinta transition-transform duration-500 group-hover:rotate-[360deg]" />
+			<span class="font-titulo text-lg leading-none tracking-wide sm:text-xl">
+				Koi <span class="text-koi">Educational</span><br class="sm:hidden" /> Games
+			</span>
+		</a>
+		<nav class="hidden items-center gap-1 font-extrabold md:flex">
+			<a href="#apps" class="rounded-full px-4 py-2 hover:bg-tinta/10">{tx.nav.apps}</a>
+			<a href="#proximamente" class="rounded-full px-4 py-2 hover:bg-tinta/10">{tx.nav.proximamente}</a>
+			<a href="#nosotros" class="rounded-full px-4 py-2 hover:bg-tinta/10">{tx.nav.nosotros}</a>
+			<a href="#contacto" class="rounded-full px-4 py-2 hover:bg-tinta/10">{tx.nav.contacto}</a>
+		</nav>
+		<a
+			href={rutaInicio(otro)}
+			hreflang={otro}
+			data-idioma={otro}
+			class="boton bg-sol px-4! py-2! text-sm"
+			aria-label={tx.nav.idiomaNombre}
+		>
+			<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+				<circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" />
+			</svg>
+			{tx.nav.idioma}
+		</a>
+	</div>
+</header>
+
+<script>
+	// El botón de idioma recuerda la elección (así la redirección automática no la pisa)
+	document.querySelectorAll<HTMLAnchorElement>('[data-idioma]').forEach((a) =>
+		a.addEventListener('click', () => {
+			try {
+				localStorage.setItem('koi-idioma', a.dataset.idioma ?? 'es');
+			} catch {}
+		}),
+	);
+	// La cabecera se vuelve sólida al bajar
+	const cabecera = document.getElementById('cabecera');
+	const marcar = () => cabecera?.classList.toggle('cabecera-solida', window.scrollY > 40);
+	addEventListener('scroll', marcar, { passive: true });
+	marcar();
+</script>
+
+<style is:global>
+	.cabecera-solida {
+		background: rgb(255 253 246 / 0.92);
+		backdrop-filter: blur(10px);
+		border-bottom: 3px solid #1e2a4a;
+	}
+</style>

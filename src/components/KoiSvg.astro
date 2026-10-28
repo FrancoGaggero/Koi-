@@ -1,0 +1,29 @@
+---
+// Koi visto desde arriba (blanco con manchas naranjas, como el ícono del estudio). Mira a la
+// derecha; 'class' para el tamaño y la posición.
+interface Props {
+	class?: string;
+	manchas?: string;
+}
+const { class: clase = '', manchas = '#ff5a36' } = Astro.props;
+---
+
+<svg class={clase} viewBox="0 0 220 110" aria-hidden="true">
+	<g stroke="#1e2a4a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+		<!-- cola -->
+		<path class="koi-cola" d="M52 55 C34 34 14 26 4 30 C16 44 18 50 12 55 C18 60 16 66 4 80 C14 84 34 76 52 55 Z" fill="#ffd9c4" />
+		<!-- aletas -->
+		<path d="M112 34 C104 14 88 8 78 12 C86 22 92 30 96 40 Z" fill="#ffd9c4" />
+		<path d="M112 76 C104 96 88 102 78 98 C86 88 92 80 96 70 Z" fill="#ffd9c4" />
+		<!-- cuerpo -->
+		<path d="M48 55 C70 26 132 22 178 34 C206 41 214 50 214 55 C214 60 206 69 178 76 C132 88 70 84 48 55 Z" fill="#fffdf6" />
+	</g>
+	<!-- manchas -->
+	<path d="M120 30 C138 26 160 30 168 40 C158 50 132 48 120 40 Z" fill={manchas} />
+	<path d="M86 60 C100 54 118 58 124 70 C112 78 94 76 86 70 Z" fill={manchas} />
+	<path d="M178 38 C192 40 202 46 206 52 C196 54 184 50 178 44 Z" fill={manchas} />
+	<!-- ojos y bigotes -->
+	<circle cx="196" cy="45" r="4" fill="#1e2a4a" />
+	<circle cx="196" cy="65" r="4" fill="#1e2a4a" />
+	<path d="M212 50 C220 46 222 40 218 36 M212 60 C220 64 222 70 218 74" stroke="#1e2a4a" stroke-width="3" fill="none" stroke-linecap="round" />
+</svg>

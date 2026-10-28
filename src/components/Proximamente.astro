@@ -1,0 +1,67 @@
+---
+import { t, type Lang } from '../i18n';
+
+const { lang } = Astro.props as { lang: Lang };
+const tx = t(lang);
+
+// Tarjetas misterio: solo un "?" y una pista, sin nombres
+const tarjetas = [
+	{ fondo: '#ff5a36', forma: 'M50 8 C78 8 94 30 92 52 C90 78 70 94 48 92 C24 90 6 72 8 48 C10 24 26 8 50 8 Z' },
+	{ fondo: '#6b3fd4', forma: 'M50 6 L62 36 L94 38 L68 58 L78 92 L50 72 L22 92 L32 58 L6 38 L38 36 Z' },
+	{ fondo: '#4fbf6a', forma: 'M20 14 H80 Q92 14 92 26 V74 Q92 86 80 86 H20 Q8 86 8 74 V26 Q8 14 20 14 Z' },
+];
+---
+
+<section id="proximamente" class="relative scroll-mt-20 py-24">
+	<!-- Koinobori (banderas koi) colgados de una caña, al costado del título -->
+	<svg class="pointer-events-none absolute left-[4%] top-6 hidden h-64 w-40 lg:block" viewBox="0 0 160 260" aria-hidden="true" data-parallax="0.12">
+		<line x1="14" y1="10" x2="14" y2="260" stroke="#1e2a4a" stroke-width="6" stroke-linecap="round" />
+		<circle cx="14" cy="10" r="8" fill="#ffc83d" stroke="#1e2a4a" stroke-width="4" />
+		{[
+			{ y: 30, c: '#ff5a36', w: 130 },
+			{ y: 82, c: '#6b3fd4', w: 112 },
+			{ y: 130, c: '#13b5aa', w: 96 },
+		].map((k, i) => (
+			<g class="vaiven" style={`--origen:14px ${k.y + 18}px;--giro:${5 + i}deg;--dur:${2.6 + i * 0.5}s;--delay:-${i}s`}>
+				<path
+					d={`M14 ${k.y} L${14 + k.w} ${k.y + 6} L${k.w - 4} ${k.y + 18} L${14 + k.w} ${k.y + 30} L14 ${k.y + 36} Z`}
+					fill={k.c}
+					stroke="#1e2a4a"
+					stroke-width="4"
+					stroke-linejoin="round"
+				/>
+				<circle cx="30" cy={k.y + 15} r="6" fill="#fffdf6" stroke="#1e2a4a" stroke-width="3" />
+				<circle cx="31" cy={k.y + 15} r="2.5" fill="#1e2a4a" />
+				<path d={`M48 ${k.y + 8} q8 10 0 20 M66 ${k.y + 9} q8 10 0 19 M84 ${k.y + 10} q8 9 0 18`} stroke="#fffdf6" stroke-width="3" fill="none" opacity="0.7" />
+			</g>
+		))}
+	</svg>
+
+	<div class="mx-auto max-w-6xl px-4 md:px-8">
+		<div class="text-center">
+			<p class="chip" data-entra>{tx.proximas.chip}</p>
+			<h2 class="titulo-juguete mt-5 text-[clamp(2.4rem,6vw,4.4rem)] text-sol" data-entra>{tx.proximas.titulo}</h2>
+			<p class="mx-auto mt-4 max-w-xl text-lg font-bold text-tinta/75" data-entra>{tx.proximas.texto}</p>
+		</div>
+
+		<div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+			{
+				tarjetas.map((c, i) => (
+					<div class="sticker brillo bg-papel p-6" style={`--delay:${i * 0.8}s`} data-entra data-tilt>
+						<div class="relative grid aspect-square place-items-center rounded-[1.5rem] border-[3px] border-tinta" style={`background:${c.fondo}`}>
+							<div class="absolute inset-0 rounded-[1.3rem] opacity-20 [background-image:repeating-linear-gradient(45deg,#fff_0_10px,transparent_10px_22px)]" />
+							<svg viewBox="0 0 100 100" class="vaiven relative w-3/5" style={`--giro:${4 + i}deg;--dur:${3 + i * 0.4}s`} aria-hidden="true">
+								<path d={c.forma} fill="#1e2a4a" opacity="0.9" />
+								<text x="50" y="66" text-anchor="middle" font-family="Luckiest Guy" font-size="46" fill="#fffdf6">?</text>
+							</svg>
+						</div>
+						<p class="titulo-juguete mt-5 text-center text-3xl text-papel" style={`-webkit-text-stroke-color:#1e2a4a;color:${c.fondo}`}>
+							{tx.proximas.tarjeta}
+						</p>
+						<p class="mt-1 text-center font-extrabold text-tinta/70">{tx.proximas.pista[i]}</p>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>

@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Proyectos de video (HyperFrames): no subir dependencias ni renders intermedios
+video/*/node_modules/
+video/*/renders/
+video/*/snapshots/
+video/*/.hyperframes/
+video/*/.thumbnails/

@@ -1,46 +1,28 @@
-# Astro Starter Kit: Basics
+# Koi Educational Games — web del estudio
 
-```sh
-npm create astro@latest -- --template basics
-```
+Web de [koigamingstudio.com](https://koigamingstudio.com), el sitio del perfil de desarrollador en
+Google Play. Astro 6 + Tailwind 4, salida estática; Netlify la publica desde este repo
+(`netlify.toml`).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Comandos
 
-## 🚀 Project Structure
+| Comando           | Qué hace                                      |
+| :---------------- | :-------------------------------------------- |
+| `npm install`     | Instala dependencias                          |
+| `npm run dev`     | Servidor local en `localhost:4321`            |
+| `npm run build`   | Compila la web en `dist/`                     |
+| `npm run preview` | Sirve `dist/` para revisarla antes de subirla |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Dónde está cada cosa
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Textos:** `src/i18n/es.ts` y `src/i18n/en.ts` (mismas claves). Español en `/`, inglés en `/en/`.
+- **Datos del estudio:** `src/config.ts`: mail, perfil de Play, paquetes de las apps, links de
+  privacidad y si cada app ya está publicada (`publicada: false` muestra "Muy pronto en Google Play").
+- **Secciones:** `src/components/` (`Hero`, `Apps` + `AppCard`, `Proximamente`, `Nosotros`, `Contacto`).
+- **Planeta 3D del hero:** `src/scripts/planeta.ts` (three.js, carga diferida desde
+  `arrancarPlaneta.ts`). Los íconos que orbitan son los PNG de `src/assets/planeta/`.
+- **Animaciones:** `src/scripts/motion.ts` (GSAP + ScrollTrigger). Con "reducir movimiento" no anima.
+- **Imágenes:** `src/assets/` (Astro las pasa a WebP).
+- **Videos:** `public/video/` (MP4 + WebM + póster). Se arman con HyperFrames en `video/<nombre>/`:
+  `npx hyperframes render . -o ./renders/video.mp4` y después se pasan a la web con ffmpeg
+  (720 px los cuadrados, 1280×720 el del estudio). Si falta un video, la tarjeta muestra la imagen de Capi.

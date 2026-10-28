@@ -1,0 +1,99 @@
+---
+import { Image, getImage } from 'astro:assets';
+import koi from '../assets/marca/koi.png';
+import { PLAY_DESARROLLADOR } from '../config';
+import { t, type Lang } from '../i18n';
+
+const { lang } = Astro.props as { lang: Lang };
+const tx = t(lang);
+
+// Sprites que orbitan el planeta: se pasan como WebP chicos al script del planeta
+const archivos = import.meta.glob<{ default: ImageMetadata }>('../assets/planeta/*.png', { eager: true });
+const sprites = await Promise.all(
+	Object.entries(archivos).map(async ([ruta, mod]) => {
+		const img = await getImage({ src: mod.default, format: 'webp', width: 192 });
+		return { nombre: ruta.split('/').pop()!.replace('.png', ''), src: img.src };
+	}),
+);
+
+// Cada letra del título va en su propio span para que entre de a una; las palabras no se cortan
+const palabras = (texto: string) => texto.split(' ').map((p) => [...p]);
+---
+
+<section class="relative overflow-hidden pt-28 pb-24 md:pt-32 md:pb-32">
+	<!-- Sol y luz de fondo -->
+	<div class="pointer-events-none absolute -top-40 right-[-10%] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,#ffe39a_0%,#ffd36b55_45%,transparent_70%)]" data-parallax="-0.15"></div>
+	<div class="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-[radial-gradient(circle,#9fe8df_0%,transparent_70%)] opacity-70"></div>
+
+	<!-- Notas que flotan -->
+	<svg class="vaiven pointer-events-none absolute right-[46%] top-28 hidden h-12 w-12 md:block" style="--giro:12deg;--dur:3.4s" viewBox="0 0 48 48" aria-hidden="true">
+		<path d="M18 36a7 6 0 1 1-2-5V8l22-5v26a7 6 0 1 1-2-5V11L18 15z" fill="#ffc83d" stroke="#1e2a4a" stroke-width="3" stroke-linejoin="round" />
+	</svg>
+	<svg class="vaiven pointer-events-none absolute left-[8%] bottom-24 h-10 w-10" style="--giro:-10deg;--dur:4.1s;--delay:-1s" viewBox="0 0 48 48" aria-hidden="true">
+		<path d="M22 38a8 7 0 1 1-2-6V6l14 6v6l-12-5z" fill="#ff8fb1" stroke="#1e2a4a" stroke-width="3" stroke-linejoin="round" />
+	</svg>
+
+	<!-- Burbujas -->
+	{[
+		{ l: '12%', t: 'auto', s: 18, d: 9, dl: 0 },
+		{ l: '30%', t: 'auto', s: 10, d: 7, dl: 2 },
+		{ l: '55%', t: 'auto', s: 22, d: 11, dl: 4 },
+		{ l: '72%', t: 'auto', s: 12, d: 8, dl: 1 },
+		{ l: '90%', t: 'auto', s: 16, d: 10, dl: 5 },
+	].map((b) => <span class="burbuja bottom-0" style={`left:${b.l};width:${b.s}px;height:${b.s}px;--dur:${b.d}s;--delay:${b.dl}s`}></span>)}
+
+	<div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 md:px-8 lg:grid-cols-[1.05fr_1fr]">
+		<div class="relative z-10 text-center lg:text-left">
+			<p class="chip" data-entra>
+				<span class="inline-block h-2.5 w-2.5 rounded-full bg-koi"></span>
+				{tx.hero.chip}
+			</p>
+			<h1 class="mt-6 text-[clamp(2.8rem,8vw,5.6rem)]" aria-label={`${tx.hero.titulo1} ${tx.hero.titulo2}`}>
+				<span class="titulo-juguete block text-sol" aria-hidden="true">
+					{palabras(tx.hero.titulo1).map((p) => (
+						<>
+							<span class="inline-block whitespace-nowrap">{p.map((c) => <span class="inline-block" data-letra>{c}</span>)}</span>{' '}
+						</>
+					))}
+				</span>
+				<span class="titulo-juguete mt-1 block text-koi" aria-hidden="true">
+					{palabras(tx.hero.titulo2).map((p) => (
+						<>
+							<span class="inline-block whitespace-nowrap">{p.map((c) => <span class="inline-block" data-letra>{c}</span>)}</span>{' '}
+						</>
+					))}
+				</span>
+			</h1>
+			<p class="mx-auto mt-7 max-w-xl text-lg font-bold leading-relaxed text-tinta/80 lg:mx-0" data-entra>{tx.hero.texto}</p>
+			<div class="mt-9 flex flex-wrap justify-center gap-4 lg:justify-start" data-entra>
+				<a href="#apps" class="boton bg-koi text-papel" data-magnetico>
+					{tx.hero.verApps}
+					<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7" /></svg>
+				</a>
+				<a href={PLAY_DESARROLLADOR} class="boton bg-papel" target="_blank" rel="noopener" data-magnetico>
+					<svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true"><path d="M4 3l11 9-11 9z" fill="#13b5aa" stroke="#1e2a4a" stroke-width="2" stroke-linejoin="round" /></svg>
+					{tx.hero.perfilPlay}
+				</a>
+			</div>
+		</div>
+
+		<!-- Planeta-estanque 3D (src/scripts/planeta.ts). Mientras carga, o sin WebGL, se ve el koi -->
+		<div class="relative mx-auto w-full max-w-[34rem]" data-entra>
+			<div id="planeta" class="relative aspect-square w-full cursor-grab touch-pan-y select-none active:cursor-grabbing" data-sprites={JSON.stringify(sprites)}>
+				<div class="planeta-respaldo absolute inset-[14%] grid place-items-center transition-opacity duration-700">
+					<Image src={koi} alt="" width={420} height={420} class="vaiven h-full w-full rounded-full border-4 border-tinta object-cover shadow-[8px_10px_0_#1e2a4a]" style="--giro:3deg;--dur:4s" loading="eager" />
+				</div>
+			</div>
+			<p class="planeta-pista pointer-events-none mx-auto -mt-2 flex w-max items-center gap-2 rounded-full border-2 border-tinta bg-papel px-4 py-1.5 text-sm font-extrabold opacity-0 shadow-[3px_3px_0_#1e2a4a] transition-opacity duration-500">
+				<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12m0-1.5v-2a1.5 1.5 0 0 1 3 0V12m0-1a1.5 1.5 0 0 1 3 0v1m0 0a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-3l-2.6-4.4a1.5 1.5 0 0 1 2.4-1.8L8 15" /></svg>
+				{tx.hero.arrastra}
+			</p>
+		</div>
+	</div>
+
+	<!-- Ola hacia la sección de apps -->
+	<svg class="absolute inset-x-0 bottom-0 h-16 w-full md:h-24" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+		<path d="M0 60 C 180 10 360 10 540 50 S 900 100 1080 55 S 1340 15 1440 40 L1440 100 L0 100 Z" fill="#13b5aa" />
+		<path d="M0 60 C 180 10 360 10 540 50 S 900 100 1080 55 S 1340 15 1440 40" fill="none" stroke="#1e2a4a" stroke-width="4" vector-effect="non-scaling-stroke" />
+	</svg>
+</section>

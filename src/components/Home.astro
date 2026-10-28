@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import Apps from './Apps.astro';
+import Proximamente from './Proximamente.astro';
+import Nosotros from './Nosotros.astro';
+import Contacto from './Contacto.astro';
+import type { Lang } from '../i18n';
+
+const { lang } = Astro.props as { lang: Lang };
+---
+
+<Layout lang={lang}>
+	<Header lang={lang} />
+	<main>
+		<Hero lang={lang} />
+		<Apps lang={lang} />
+		<Proximamente lang={lang} />
+		<Nosotros lang={lang} />
+	</main>
+	<Contacto lang={lang} />
+</Layout>
+
+<script>
+	import '../scripts/motion';
+	import '../scripts/arrancarPlaneta';
+</script>
