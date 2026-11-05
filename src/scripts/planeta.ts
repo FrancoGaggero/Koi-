@@ -11,7 +11,7 @@ const RADIO = 1.75;
 const AUTO = 0.18;                  // giro automático (rad/s)
 const ROCE = 2.6;                   // cuánto frena la inercia después de soltar
 const ANILLO_A = ['app-music', 'capi-director', 'piano', 'tambor', 'guitarra', 'app-learn', 'capi-aviador', 'trompeta', 'xilofono', 'maracas'];
-const GRANDES = new Set(['app-music', 'app-learn', 'capi-director', 'capi-aviador']);
+const GRANDES = new Set(['app-music', 'app-learn', 'capi-director', 'capi-aviador', 'app-draw', 'app-farm', 'chamy', 'lola']);
 
 // Koi visto desde arriba (el mismo dibujo que KoiSvg.astro), mirando a +x
 const koiSvg = (manchas: string) => `

@@ -4,7 +4,7 @@ const en: Textos = {
 	meta: {
 		titulo: 'Koi Educational Games · Games to learn through play',
 		descripcion:
-			'Independent studio making educational games for kids ages 4 to 7: Capybara Music & Sounds and Capibara Learn & Play, starring Capi the capybara.',
+			'Independent studio making educational games for kids ages 2 to 7: Capybara Music & Sounds, Capibara Learn & Play, Chameleon Draw & Paint and Cow Farm & Garden.',
 	},
 	nav: { apps: 'Apps', proximamente: 'Coming soon', nosotros: 'About', contacto: 'Contact', idioma: 'ES', idiomaNombre: 'Español' },
 	hero: {
@@ -12,14 +12,14 @@ const en: Textos = {
 		titulo1: 'Play is the best',
 		titulo2: 'way to learn',
 		texto:
-			'We make games for kids ages 4 to 7 with music, colors, numbers and capybaras. No reading needed: kids play by tapping, listening and discovering.',
+			'We make games for kids ages 2 to 7 with music, colors, numbers, drawing and farm animals. No reading needed: kids play by tapping, listening and discovering.',
 		verApps: 'See the apps',
 		perfilPlay: 'Our Google Play profile',
 		arrastra: 'Drag the planet',
 	},
 	apps: {
 		chip: 'Our apps',
-		titulo: 'Two worlds to explore',
+		titulo: 'Four worlds to explore',
 		disponible: 'Get it on Google Play',
 		muyPronto: 'Coming soon to Google Play',
 		privacidad: 'Privacy policy',
@@ -38,6 +38,20 @@ const en: Textos = {
 				'More than 25 games with numbers, shapes, colors, memory, puzzles, drawing and music, so little ones can practice at their own pace.',
 			chips: ['25+ games', 'Numbers & shapes', 'Drawing & painting', '6 languages'],
 		},
+		draw: {
+			nombre: 'Chameleon Draw & Paint',
+			lema: 'An art studio with Chamy, the chameleon who changes color with every paint.',
+			texto:
+				'20 games to draw, color and create: a free studio with crayons, watercolor and glitter, neon lights, paint fireworks, stickers, connect the dots, color mixing and much more.',
+			chips: ['20 games', 'Drawing & painting', 'Color mixing', '6 languages'],
+		},
+		farm: {
+			nombre: 'Cow Farm & Garden',
+			lema: 'A farm full of games with Lola, the little farmer cow.',
+			texto:
+				'30 games to plant, care for the animals, paint and count: bathe the piglet, collect eggs, dress up Lola, animal balloons, bees and flowers, a whole farm to explore by day and by night, and much more. The difficulty rises on its own as kids play.',
+			chips: ['30 games', 'From age 2', 'Animals & garden', '6 languages'],
+		},
 	},
 	proximas: {
 		chip: 'Coming soon',
@@ -52,7 +66,7 @@ const en: Textos = {
 		texto:
 			'Koi Educational Games is an independent studio. We design every game around how young kids really play, and around the peace of mind of their families.',
 		promesas: [
-			{ titulo: 'Ages 4 to 7', texto: 'Big buttons, simple rules and rewards that motivate without frustration.' },
+			{ titulo: 'Ages 2 to 7', texto: 'Big buttons, simple rules and rewards that motivate without frustration.' },
 			{ titulo: 'No reading', texto: 'Played with pictures and sounds, even before kids can read.' },
 			{ titulo: 'Parental gate', texto: 'Purchases and links are behind a check only an adult can solve.' },
 			{ titulo: '6 languages', texto: 'Spanish, English, Portuguese, German, Chinese and Hindi.' },

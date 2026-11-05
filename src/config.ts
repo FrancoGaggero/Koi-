@@ -22,6 +22,16 @@ export const APPS = {
 		publicada: true,
 		privacidad: 'https://francogaggero-creator.github.io/privacy/',
 	},
+	draw: {
+		paquete: 'com.krowdsupply.chameleonDrawPaint',
+		publicada: false,
+		privacidad: 'https://koigamingstudio.com/privacy/chameleon-draw-paint.html',
+	},
+	farm: {
+		paquete: 'com.krowdsupply.cowFarmGarden',
+		publicada: false,
+		privacidad: 'https://koigamingstudio.com/privacy/cow-farm-garden.html',
+	},
 } as const;
 
 export const linkPlay = (paquete: string) => `https://play.google.com/store/apps/details?id=${paquete}`;

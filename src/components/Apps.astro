@@ -5,8 +5,12 @@ import { APPS } from '../config';
 import { t, type Lang } from '../i18n';
 import iconoMusic from '../assets/apps/capibara-music-icono.png';
 import iconoLearn from '../assets/apps/learn-play-icono.png';
+import iconoDraw from '../assets/apps/chameleon-draw-icono.png';
+import iconoFarm from '../assets/apps/cow-farm-icono.png';
 import capiDirector from '../assets/apps/capi-director.png';
 import capiAviador from '../assets/apps/capi-aviador.png';
+import chamy from '../assets/apps/chamy-pintor.png';
+import lola from '../assets/apps/lola-granjera.png';
 
 const { lang } = Astro.props as { lang: Lang };
 const tx = t(lang);
@@ -70,6 +74,37 @@ const video = (nombre: string) =>
 					acento="#ff5a36"
 					invertido
 					video={video('learn-play')}
+				/>
+			</div>
+			<div class="rounded-[2.5rem] bg-papel/95 p-6 md:p-10 sticker">
+				<AppCard
+					lang={lang}
+					app="draw"
+					icono={iconoDraw}
+					capi={chamy}
+					miniaturas={deApp('draw')}
+					paquete={APPS.draw.paquete}
+					publicada={APPS.draw.publicada}
+					privacidad={APPS.draw.privacidad}
+					fondo="radial-gradient(circle at 30% 20%, #7fe0d0, #13b5aa 75%)"
+					acento="#0e9a90"
+					video={video('chameleon-draw')}
+				/>
+			</div>
+			<div class="rounded-[2.5rem] bg-papel/95 p-6 md:p-10 sticker">
+				<AppCard
+					lang={lang}
+					app="farm"
+					icono={iconoFarm}
+					capi={lola}
+					miniaturas={deApp('farm')}
+					paquete={APPS.farm.paquete}
+					publicada={APPS.farm.publicada}
+					privacidad={APPS.farm.privacidad}
+					fondo="radial-gradient(circle at 30% 20%, #b8ec8a, #4fbf6a 75%)"
+					acento="#2f9a4a"
+					invertido
+					video={video('cow-farm')}
 				/>
 			</div>
 		</div>

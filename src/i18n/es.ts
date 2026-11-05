@@ -4,7 +4,7 @@ const es = {
 	meta: {
 		titulo: 'Koi Educational Games · Juegos para aprender jugando',
 		descripcion:
-			'Estudio independiente de juegos educativos para chicos de 4 a 7 años: Capybara Music & Sounds y Capibara Learn & Play, con Capi el capibara.',
+			'Estudio independiente de juegos educativos para chicos de 2 a 7 años: Capybara Music & Sounds, Capibara Learn & Play, Chameleon Draw & Paint y Cow Farm & Garden.',
 	},
 	nav: { apps: 'Apps', proximamente: 'Próximamente', nosotros: 'Nosotros', contacto: 'Contacto', idioma: 'EN', idiomaNombre: 'English' },
 	hero: {
@@ -12,14 +12,14 @@ const es = {
 		titulo1: 'Jugar es la mejor',
 		titulo2: 'forma de aprender',
 		texto:
-			'Hacemos juegos para chicos de 4 a 7 años con música, colores, números y capibaras. Sin textos que leer: se juega tocando, escuchando y descubriendo.',
+			'Hacemos juegos para chicos de 2 a 7 años con música, colores, números, dibujo y animales de la granja. Sin textos que leer: se juega tocando, escuchando y descubriendo.',
 		verApps: 'Ver las apps',
 		perfilPlay: 'Nuestro perfil en Google Play',
 		arrastra: 'Arrastrá el planeta',
 	},
 	apps: {
 		chip: 'Nuestras apps',
-		titulo: 'Dos mundos para explorar',
+		titulo: 'Cuatro mundos para explorar',
 		disponible: 'Disponible en Google Play',
 		muyPronto: 'Muy pronto en Google Play',
 		privacidad: 'Política de privacidad',
@@ -38,6 +38,20 @@ const es = {
 				'Más de 25 juegos de números, formas, colores, memoria, rompecabezas, dibujo y música, para que los más chicos practiquen a su ritmo.',
 			chips: ['+25 juegos', 'Números y formas', 'Dibujo y pintura', '6 idiomas'],
 		},
+		draw: {
+			nombre: 'Chameleon Draw & Paint',
+			lema: 'Un taller de arte con Chamy, el camaleón que cambia de color con cada pintura.',
+			texto:
+				'20 juegos para dibujar, colorear y crear: estudio libre con crayones, acuarela y brillitos, luces de neón, fuegos de pintura, stickers, unir los puntos, mezclas de colores y mucho más.',
+			chips: ['20 juegos', 'Dibujo y pintura', 'Colores y mezclas', '6 idiomas'],
+		},
+		farm: {
+			nombre: 'Cow Farm & Garden',
+			lema: 'Una granja llena de juegos con Lola, la vaquita granjera.',
+			texto:
+				'30 juegos para sembrar, cuidar a los animales, pintar y contar: bañar al cerdito, juntar huevos, decorar a Lola, globos de animales, abejas y flores, una granja para explorar de día y de noche, y mucho más. La dificultad sube sola a medida que juegan.',
+			chips: ['30 juegos', 'Desde 2 años', 'Animales y huerta', '6 idiomas'],
+		},
 	},
 	proximas: {
 		chip: 'Próximamente',
@@ -52,7 +66,7 @@ const es = {
 		texto:
 			'Koi Educational Games es un estudio independiente. Diseñamos cada juego pensando en cómo juegan de verdad los más chicos y en la tranquilidad de sus familias.',
 		promesas: [
-			{ titulo: 'Para 4 a 7 años', texto: 'Botones grandes, reglas simples y premios que motivan sin frustrar.' },
+			{ titulo: 'Para 2 a 7 años', texto: 'Botones grandes, reglas simples y premios que motivan sin frustrar.' },
 			{ titulo: 'Sin textos', texto: 'Se juega con imágenes y sonidos, incluso antes de saber leer.' },
 			{ titulo: 'Control para adultos', texto: 'Las compras y los links pasan por un control que solo resuelve un adulto.' },
 			{ titulo: 'En 6 idiomas', texto: 'Español, inglés, portugués, alemán, chino e hindi.' },
