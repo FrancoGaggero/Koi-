@@ -15,12 +15,12 @@ export const APPS = {
 		paquete: 'com.krowdsupply.capibaraMusicSounds',
 		// false hasta que salga a producción: el botón dice "Muy pronto en Google Play"
 		publicada: false,
-		privacidad: 'https://francogaggero-creator.github.io/privacy/capibara-music.html',
+		privacidad: 'https://koigamingstudio.com/privacy/capibara-music.html',
 	},
 	learn: {
 		paquete: 'com.krowdsupply.capibaraLearnPlay',
 		publicada: true,
-		privacidad: 'https://francogaggero-creator.github.io/privacy/',
+		privacidad: 'https://koigamingstudio.com/privacy/capibara-learn-play.html',
 	},
 	draw: {
 		paquete: 'com.krowdsupply.chameleonDrawPaint',
